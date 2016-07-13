@@ -1,0 +1,18 @@
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>BattleGroup</th>
+        <th>Population</th>
+        <th>Locale</th>
+    </tr>
+    <tr *ngFor="let realm of realms">
+        <td>{{realm.status}}</td>
+        <td>{{realm.name}}</td>
+        <td>{{realm.type}}</td>
+        <td>{{realm.battlegroup}}</td>
+        <td>{{realm.population}}</td>
+        <td>{{realm.locale}}</td>
+    </tr>
+</table>
