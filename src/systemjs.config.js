@@ -4,18 +4,14 @@
         'app': 'app',
         '@angular': 'node_modules/@angular',
         'rxjs': 'node_modules/rxjs',
-        'ng2-bootstrap': 'node_modules/ng2-bootstrap',
-        'ng2-table': 'node_modules/ng2-table',
-        'moment': 'node_modules/moment'
+        'ng2-bootstrap': 'node_modules/ng2-bootstrap'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         app: { main: 'main.js',  defaultExtension: 'js' },
         rxjs: { defaultExtension: 'js' },
-        "ng2-bootstrap": {main: '/bundles/ng2-bootstrap.min.js', defaultExtension: 'js'},
-        "ng2-table": {main: '/bundles/ng2-table.min.js', defaultExtension: 'js'},
-        "moment": {main: '/moment.js', defaultExtension: 'js'}
+        "ng2-bootstrap": {main: '/bundles/ng2-bootstrap.min.js', defaultExtension: 'js'}
     };
 
     var ngPackageNames = [
