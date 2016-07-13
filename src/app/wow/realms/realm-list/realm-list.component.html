@@ -8,11 +8,18 @@
         <th>Locale</th>
     </tr>
     <tr *ngFor="let realm of realms">
-        <td>{{realm.status}}</td>
+        <td [ngSwitch]="realm.status">
+            <template [ngSwitchCase]="true"><span class="label label-success">Up</span></template>
+            <template [ngSwitchCase]="false"><span class="label label-danger">Down</span></template>
+        </td>
         <td>{{realm.name}}</td>
         <td>{{realm.type}}</td>
         <td>{{realm.battlegroup}}</td>
-        <td>{{realm.population}}</td>
+        <td [ngSwitch]="realm.population">
+            <template [ngSwitchCase]="'high'"><span class="label label-danger">{{realm.population}}</span></template>
+            <template [ngSwitchCase]="'medium'"><span class="label label-warning">{{realm.population}}</span></template>
+            <template [ngSwitchCase]="'low'"><span class="label label-success">{{realm.population}}</span></template>
+        </td>
         <td>{{realm.locale}}</td>
     </tr>
 </table>
