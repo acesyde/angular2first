@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTableDirectives } from 'angular2-datatable/datatable';
 import { RealmService } from '../shared/realm.service';
 import { Realm } from '../shared/realm.model';
 
@@ -6,7 +7,8 @@ import { Realm } from '../shared/realm.model';
     moduleId: module.id,
     selector: 'wow-realmlist',
     templateUrl: 'realm-list.component.html',
-    providers: [RealmService]
+    providers: [RealmService],
+    directives: [DataTableDirectives]
 })
 export class RealmListComponent implements OnInit {
 

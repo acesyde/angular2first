@@ -4,14 +4,18 @@
         'app': 'app',
         '@angular': 'node_modules/@angular',
         'rxjs': 'node_modules/rxjs',
-        'ng2-bootstrap': 'node_modules/ng2-bootstrap'
+        'ng2-bootstrap': 'node_modules/ng2-bootstrap',
+        'angular2-datatable' : 'node_modules/angular2-datatable',
+        'lodash' : 'node_modules/lodash'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         app: { main: 'main.js',  defaultExtension: 'js' },
         rxjs: { defaultExtension: 'js' },
-        "ng2-bootstrap": {main: '/bundles/ng2-bootstrap.min.js', defaultExtension: 'js'}
+        "ng2-bootstrap": {main: '/bundles/ng2-bootstrap.min.js', defaultExtension: 'js'},
+        "angular2-datatable": {main: '/datatable.js', defaultExtension: 'js'},
+        "lodash": {main: '/lodash.js', defaultExtension: 'js'}
     };
 
     var ngPackageNames = [

@@ -1,25 +1,36 @@
-<table class="table">
-    <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>BattleGroup</th>
-        <th>Population</th>
-        <th>Locale</th>
-    </tr>
-    <tr *ngFor="let realm of realms">
-        <td [ngSwitch]="realm.status">
-            <template [ngSwitchCase]="true"><span class="label label-success">Up</span></template>
-            <template [ngSwitchCase]="false"><span class="label label-danger">Down</span></template>
-        </td>
-        <td>{{realm.name}}</td>
-        <td>{{realm.type}}</td>
-        <td>{{realm.battlegroup}}</td>
-        <td [ngSwitch]="realm.population">
-            <template [ngSwitchCase]="'high'"><span class="label label-danger">{{realm.population}}</span></template>
-            <template [ngSwitchCase]="'medium'"><span class="label label-warning">{{realm.population}}</span></template>
-            <template [ngSwitchCase]="'low'"><span class="label label-success">{{realm.population}}</span></template>
-        </td>
-        <td>{{realm.locale}}</td>
-    </tr>
+<table class="table table-striped" [mfData]="realms" #mf="mfDataTable" [mfRowsOnPage]="10">
+    <thead>
+        <tr>
+            <th></th>
+            <th><mfDefaultSorter by="name">Name</mfDefaultSorter></th>
+            <th><mfDefaultSorter by="type">Type</mfDefaultSorter></th>
+            <th><mfDefaultSorter by="battleGroup">BattleGroup</mfDefaultSorter></th>
+            <th>Population</th>
+            <th><mfDefaultSorter by="locale">Locale</mfDefaultSorter></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let realm of mf.data">
+            <td [ngSwitch]="realm.status">
+                <template [ngSwitchCase]="true"><span class="label label-success">Up</span></template>
+                <template [ngSwitchCase]="false"><span class="label label-danger">Down</span></template>
+            </td>
+            <td>{{realm.name}}</td>
+            <td>{{realm.type | uppercase}}</td>
+            <td>{{realm.battlegroup}}</td>
+            <td [ngSwitch]="realm.population">
+                <template [ngSwitchCase]="'high'"><span class="label label-danger">{{realm.population}}</span></template>
+                <template [ngSwitchCase]="'medium'"><span class="label label-warning">{{realm.population}}</span></template>
+                <template [ngSwitchCase]="'low'"><span class="label label-success">{{realm.population}}</span></template>
+            </td>
+            <td>{{realm.locale}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+    </tfoot>
 </table>
