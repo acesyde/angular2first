@@ -23,8 +23,12 @@ gulp.task('clean:dist', function(cb) {
     rimraf(paths.dist, cb);
 });
 
+gulp.task('watch', function() {
+    gulp.watch(paths.src, ['copy:src']);
+});
+
 gulp.task('server', plugins.shell.task('tsc && concurrently \"npm run tsc:w\" \"npm run lite\" '));
 
 gulp.task('default', function(done) {
-    runSequence('clean:dist', 'copy:src', 'server', done);
+    runSequence('clean:dist', 'copy:src', 'watch', 'server', done);
 });
