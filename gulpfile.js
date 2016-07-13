@@ -12,11 +12,16 @@ var paths = {
         'src/**/*.css',
         'src/favicon.ico'
     ],
-    dist: 'dist'
+    dist: 'dist',
+    config: 'src/app/config/*.json'
 };
 
 gulp.task('copy:src', function() {
     return gulp.src(paths.src).pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('copy:config', function() {
+    return gulp.src(paths.config).pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('clean:dist', function(cb) {
@@ -25,10 +30,11 @@ gulp.task('clean:dist', function(cb) {
 
 gulp.task('watch', function() {
     gulp.watch(paths.src, ['copy:src']);
+    gulp.watch(paths.config, ['copy:config']);
 });
 
 gulp.task('server', plugins.shell.task('tsc && concurrently \"npm run tsc:w\" \"npm run lite\" '));
 
 gulp.task('default', function(done) {
-    runSequence('clean:dist', 'copy:src', 'watch', 'server', done);
+    runSequence('clean:dist', 'copy:config', 'copy:src', 'watch', 'server', done);
 });

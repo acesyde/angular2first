@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
+// Configuration
+import {ConfigurationService } from './shared/configuration/configuration.service';
+
 // Shared components
 import {NavBarComponent} from './shared/navbar/navbar.component';
 import {FooterComponent} from './shared/footer/footer.component';
@@ -18,4 +21,7 @@ import {AboutComponent} from './about/about.component';
 })
 
 export class AppComponent {
+    constructor(private configurationService:ConfigurationService) {
+        configurationService.load();
+    }
 }
